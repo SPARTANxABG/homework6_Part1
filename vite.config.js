@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/homework6_part1/',
+  base: '/homework6_Part1/',
   plugins: [vue()],
   resolve: {
     alias: {
