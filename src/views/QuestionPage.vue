@@ -28,7 +28,7 @@ onMounted(async () => {
   })
 
   answers.value = shuffle(answers.value)
-  console.log(question.value)
+  // console.log(question.value)
 
 })
 
