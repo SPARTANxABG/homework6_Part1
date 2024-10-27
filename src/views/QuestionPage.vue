@@ -6,7 +6,7 @@ import BaseTitle from '@/components/BaseTitle.vue';
 import DifficultyChip from '@/components/DifficultyChip.vue';
 import MainScore from '@/components/MainScore.vue';
 import useScore from '@/composables/useScore';
-import router from '@/router';
+import router from "@/router"
 
 const api = useAPI()
 const question = ref(null)
@@ -14,6 +14,8 @@ const route = useRoute()
 const answers = ref([])
 const { changeScore } = useScore()
 const notification = ref('')
+
+
 
 onMounted(async () => {
   question.value = await api.getQuestion(route.params.id)
@@ -62,35 +64,38 @@ const handleAnswer = (points) => {
   }
 
   setTimeout(() => {
-    router.push('/trivia-app/')
+    router.push('/homework6_Part1/')
   }, 1000)
 }
 
 </script>
 
+
+
 <template>
 
-<div v-if="question" class="flex h-full w-full flex-col items-centered gap-8 p-10">
+<div v-if="question" class="flex h-full w-full flex-col items-center gap-8 p-10">
   <BaseTitle>
-    <MainScore></MainScore>
+    <MainScore></MainScore> &nbsp; 
     <span class="font-bold" :class="notification === 'CORRECT' ? 'text-green-500' : 'text-red-500'">
       {{ notification }}
     </span>
   </BaseTitle>
-  <!-- {{ question.question }} -->
+  <!-- {{  question.question }} -->
 
   <div v-html="question.question" class="text-center text-2xl font-bold"></div>
   <div class="grid w-full flex-grow grid-cols-2 gap-8">
-    <div v-for="answer in answers" 
-    v-html="answer.answer" 
-    :key="answer.id" 
-    @click="handleAnswer(answer.points)"
-    class="bg-green-500 flex items-center justify-center text-4xl rounded-lg text-white py-10 px-2 ">
-    </div>
+      <div v-for="answer in answers" 
+      v-html="answer.answer" 
+      :key="answer.id"
+      @click="handleAnswer(answer.points)"
+      class="bg-green-500 flex items-center justify-center text-4xl rounded-lg text-white py-10 px-2 ">
+
+      </div>
+
   </div>
   <DifficultyChip :difficulty="question.difficulty"></DifficultyChip>
 </div>
-
 <div v-else class="">
   Loading...
 </div>

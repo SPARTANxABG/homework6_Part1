@@ -1,6 +1,6 @@
 <script setup>
 import useScore from '@/composables/useScore';
-    const { score } = useScore()
+    const {score} = useScore()
 </script>
 
 <template>
